@@ -16,9 +16,10 @@ async fn launcher(req_body: String) -> impl Responder {
 }
 
 #[get("/collect")]
-pub async fn collect(req: HttpRequest) -> impl Responder {
+async fn collect(req: HttpRequest) -> impl Responder {
     if let Some(val) = req.peer_addr() {
-        println!("Address {:?}", val.ip());
+        println!("Client address {:?}", val.ip());
+        println!("Client port {:?}", val.port());
     };
     HttpResponse::Ok()
 }
