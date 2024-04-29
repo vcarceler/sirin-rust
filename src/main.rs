@@ -1,7 +1,7 @@
 //
 // rust-sirin <IP> <PORT> <SECRET>
 
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{get, post, App, HttpResponse, HttpServer, Responder};
 
 
 #[get("/")]
