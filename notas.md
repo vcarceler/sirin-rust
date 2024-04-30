@@ -15,10 +15,11 @@ activo nos podemos encontrar el siguiente mensaje de actix-web en el navegador.
 Requested application data is not configured correctly. View/enable debug logs for more details.
 ~~~
 
-Añadir env_logger
+Añadir a Cargo.toml
 
 ~~~
 cargo add env_logger
+cargo add log
 ~~~
 
 Añadir a la función main

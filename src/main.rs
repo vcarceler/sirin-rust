@@ -33,6 +33,7 @@ async fn collect(req: HttpRequest) -> impl Responder {
 async fn register(name: web::Path<String>, req: HttpRequest, data: web::Data<AppState>) -> impl Responder {
     println!("sirin-rust /register/{}", name);
     println!("AppState.app_name: {}", &data.app_name);
+    
     if let Some(val) = req.peer_addr() {
         println!("Client address {:?}", val.ip());
         println!("Client port {:?}", val.port());
@@ -51,9 +52,13 @@ async fn main() -> std::io::Result<()> {
 
     println!("sirin-rust IP PORT SECRET");
     println!("sirin-rust {0} {1} {2}", ip, port, secreto);
+    log::info!("sirin-rust {0} {1} {2}", ip, port, secreto);
 
     HttpServer::new(|| {
         App::new()
+            .app_data(web::Data::new(AppState {
+                app_name: String::from("sirin-rust"),
+            }))
             .service(root)
             .service(launcher)
             .service(collect)
