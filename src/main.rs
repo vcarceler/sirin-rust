@@ -3,6 +3,7 @@
 
 use actix_web::{get, post, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
 
+
 // This struct represents state
 struct AppState {
     app_name: String,
@@ -33,6 +34,8 @@ async fn collect(req: HttpRequest) -> impl Responder {
 async fn register(name: web::Path<String>, req: HttpRequest, data: web::Data<AppState>) -> impl Responder {
     println!("sirin-rust /register/{}", name);
     println!("AppState.app_name: {}", &data.app_name);
+
+
     
     if let Some(val) = req.peer_addr() {
         println!("Client address {:?}", val.ip());
